@@ -1,0 +1,58 @@
+!c::
+temp =0
+while !GetKeyState("F12") 
+{
+    Sleep 100
+    PixelSearch,x ,y, 1240, 607, 1294, 679, 0xFAD192 ,3, RGB, Fast
+
+    if (ErrorLevel = 0)
+    {
+        temp++
+        ;Random, rand, 0, 9
+        if (temp > 35)
+	    {
+		    Sleep 1000
+		    Send {5}
+
+       		    Random, rand, 1,31
+		    x=1112+rand
+		    y=657+rand
+
+		    MouseClick, left,x,y
+		    Sleep 31
+			
+		    Random, rand, 1,31
+		    x=766+rand
+	            y=973+rand
+
+		    MouseClick, left,x,y
+		    Sleep 31
+		    temp = 0
+		}
+				
+		Random, rand, 276, 358
+		Sleep rand
+		Send {e}
+		Random, rand, 5987, 6253
+		PixelSearch,x ,y, 1240, 607, 1294, 679, 0xFAD192 ,3, RGB, Fast 
+		Sleep rand
+		if (ErrorLevel = 0)
+		{
+			Send {b} 
+			i=0
+			while(i++ < 50)
+			{
+				PixelSearch,x ,y, 1240, 607, 1294, 679, 0xFAD192 ,3, RGB, Fast 
+				Random, rand, 300, 350
+				Sleep rand
+				if(ErrorLevel = 0)
+				{
+					Send {Space}
+				}
+			}		
+		}
+		
+		Send {e}
+    }
+}
+return
